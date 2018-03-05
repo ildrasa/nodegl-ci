@@ -1,0 +1,7 @@
+FROM ubuntu:17.10 
+
+## Build dependencies. 
+RUN apt-get update && apt-get install -y gcc binutils make pkg-config openssl ca-certificates git libx11-dev libglfw3-dev libglfw3 libavcodec-dev libavdevice-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libpostproc-dev libswresample-dev libswscale-dev
+# Cleanup. 
+RUN rm -rf /var/cache/apt/* /tmp/*
+
