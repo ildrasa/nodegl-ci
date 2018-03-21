@@ -3,9 +3,13 @@
 ## Prerequisite
 - docker
 - bash
-- a file cov.tgz with coverity scan 
+- tar
+- wget
+- curl
+ 
 ## Usage
-Launch script nodegl-sh-ci.sh, ensure you have access right to docker volumes directory.
+Ensure you have access right to docker volumes directory.
+Launch script nodegl-sh-ci.sh <coverity upload token> <email account for coverity scan> .
 ```shell
-./nodegl-sh-ci.sh
+./nodegl-sh-ci.sh "$MY_TOKEN" "$MAIL"
 ```
