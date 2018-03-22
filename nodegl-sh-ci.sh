@@ -48,19 +48,10 @@ if [[ -z "$COVERITY_PATH" ]]; then
 	COVERITY_PATH=$(docker volume inspect --format '{{ .Mountpoint }}' coverity)
 	# get coverity tarball
 	wget https://scan.coverity.com/download/linux64 --post-data "token=$TOKEN&project=node.gl" -O coverity_tool.tgz
-	# get tarbell hash
-	wget https://scan.coverity.com/download/linux64 --post-data "token=$TOKEN&project=node.gl&md5=1" -O coverity_tool.md5
-	# verify coverity download
-	if[ "$(md5sum /home/path/file1.txt |awk '{print $1)')" == "$(md5sum /home/path/file2.txt |awk '{print $1}')" ]; then
-		echo "untar coverity into volume 'coverity' "
-		# untar coverity into coverity volume
-		tar -xvzf coverity_tool.tgz -C $COVERITY_PATH
-		echo "Docker volume 'coverity' created at $COVERITY_PATH."
-	else
-		docker volume rm coverity
-		echo "coverity download failed"
-		exit 1
-	fi
+	echo "untar coverity into volume 'coverity' "
+	# untar coverity into coverity volume
+	tar -xvzf coverity_tool.tgz -C $COVERITY_PATH
+	echo "Docker volume 'coverity' created at $COVERITY_PATH."
 else
 	echo "Docker volume 'coverity' found at $COVERITY_PATH."
 fi
