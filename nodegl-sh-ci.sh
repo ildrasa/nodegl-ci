@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 printHelp() {
   echo "Usage: nodegl-sh-ci.sh <coverity token> <email>"
   echo ""
