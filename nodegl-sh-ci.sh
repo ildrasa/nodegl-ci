@@ -86,5 +86,5 @@ curl --form token=$TOKEN \
 echo "clean build artifacts"
 docker stop nodegl-build
 docker rm nodegl-build
-rm -rf $COVERITY_PATH/cov-int $BUILD_SCRIPT_PATH/test-results ./cov-int
+rm -rf $COVERITY_PATH/cov-int $BUILD_SCRIPT_PATH/tests-results ./cov-int
 
