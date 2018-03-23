@@ -35,6 +35,7 @@ echo "test asm"
 ./test_asm >> /home/root/build-script/tests-results/test_asm_res.txt
 echo "test utils"
 ./test_utils >> /home/root/build-script/tests-results/test_utils_res.txt
+chmod -R 777 /home/root/build-script
 
 # clean libnodegl for coverity run
 echo "clean libnodegl"
@@ -48,6 +49,6 @@ cd $NGLDIR/node.gl
 PKG_CONFIG_PATH=$NGLDIR/env/lib/pkgconfig cov-build --dir cov-int make -C libnodegl PREFIX=$NGLDIR/env
 # copy coverity results into docker volume 'coverity'
 cp -R /root/ngl-build/node.gl/cov-int /home/root/coverity/cov-int
-
+chmod -R 777 /home/root/coverity/cov-int
 
 
