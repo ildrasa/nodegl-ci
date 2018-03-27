@@ -61,7 +61,7 @@ fi
 # start docker container used for build and running tests
 echo "start container"
 ABSOLUTE_PATH=$(pwd)
-docker run -d --name nodegl-build -t --mount type=bind,src=$ABSOLUTE_PATH/$COVERITY_PATH,dest=/home/root/coverity --mount type=bind,src=$ABSOLUTE_PATH/$BUILD_SCRIPT_PATH,destination=/home/root/build-script nodegl:CI -e TOKEN=$TOKEN -e MAIL=$MAIL
+docker run -d --name nodegl-build -t --mount type=bind,src=$ABSOLUTE_PATH/$COVERITY_PATH,dst=/home/root/coverity --mount type=bind,src=$ABSOLUTE_PATH/$BUILD_SCRIPT_PATH,dst=/home/root/build-script nodegl:CI
 
 # launch build and tests
 echo "launch build and test on container"
