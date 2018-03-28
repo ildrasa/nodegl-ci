@@ -69,11 +69,12 @@ docker exec --workdir /home/root/build-script nodegl-build sh nodegl-build.sh
 
 # get results from docker volumes
 echo "recover test results artifacts"
-cp -R $COVERITY_PATH/cov-int .
 cp -R $BUILD_SCRIPT_PATH/tests-results .
+cp -R $COVERITY_PATH/cov-int .
 tar cvzf cov-int.tgz cov-int
 
-# upload results
+# upload results if new tar has been generated
+if [ $? -eq 0 ]; then
 echo "upload result to coverity scan"
 curl --form token=$TOKEN \
   --form email=$MAIL \
@@ -81,6 +82,9 @@ curl --form token=$TOKEN \
   --form version="Version" \
   --form description="Description" \
   https://scan.coverity.com/builds?project=node.gl
+else
+	echo "Coverity scan did not generate new results."
+fi
 
 # clean for next run
 echo "clean build artifacts"
