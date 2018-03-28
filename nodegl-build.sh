@@ -44,7 +44,7 @@ make clean
 
 # start coverity data collection run
 echo "start coverity wrapped make for libnodegl"
-export PATH=$PATH:/home/root/coverity/cov/bin
+export PATH=$PATH:/home/root/coverity/cov-analysis-linux64-2017.07/bin
 cd $NGLDIR/node.gl
 PKG_CONFIG_PATH=$NGLDIR/env/lib/pkgconfig cov-build --dir cov-int make -C libnodegl PREFIX=$NGLDIR/env
 # copy coverity results into docker volume 'coverity'
