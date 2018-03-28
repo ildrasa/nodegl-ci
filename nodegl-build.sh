@@ -53,5 +53,7 @@ if [ $? -eq 0 ]; then
 	# copy coverity results into docker volume 'coverity'
 	cp -R /root/ngl-build/node.gl/cov-int /home/root/coverity/cov-int
 	chmod -R 777 /home/root/coverity/cov-int
+else
+	echo "Coverity scan failed"
 fi
 
